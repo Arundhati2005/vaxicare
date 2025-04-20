@@ -1,6 +1,7 @@
 apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
+apply plugin: "com.google.gms.google-services"
 
 /**
  * This is the configuration block to customize your React Native Android app.
@@ -92,6 +93,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            storeFile file(VAXICARE_UPLOAD_STORE_FILE)
+            storePassword VAXICARE_UPLOAD_STORE_PASSWORD
+            keyAlias VAXICARE_UPLOAD_KEY_ALIAS
+            keyPassword VAXICARE_UPLOAD_KEY_PASSWORD
+        }
     }
     buildTypes {
         debug {
@@ -100,7 +107,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -116,4 +123,11 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+    
+    // Remove exclusion configuration for document-picker
+}
+
+// Add exclusions for specific libraries
+configurations.all {
+    exclude group: 'com.facebook.react', module: 'react-native-document-picker'
 }
