@@ -6,7 +6,6 @@ import LoginScreen from "./src/screens/LoginScreen";
 import SignupScreen from "./src/screens/SignupScreen";
 import UserHomeScreen from "./src/screens/HomeScreenUser";
 import HospitalHomeScreen from "./src/screens/HomeScreenHospital";
-import TestScreen from "./src/screens/TestScreen";
 import VaccineInfoHub from "./src/screens/VaccineInfoHub";
 import RecoveryScreen from "./src/temp/RecoveryScreen";
 import DatabaseViewer from "./src/temp/DatabaseViewer";
@@ -40,8 +39,7 @@ const Stack = createNativeStackNavigator();
 const Navigation = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="TestScreen">
-        <Stack.Screen name="TestScreen" component={TestScreen} options={{ title: "VAXICARE Test" }} />
+      <Stack.Navigator initialRouteName="AuthSelection">
         <Stack.Screen name="AuthSelection" component={AuthSelection} options={{ headerShown: false }} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
         <Stack.Screen name="SignupScreen" component={SignupScreen} />
